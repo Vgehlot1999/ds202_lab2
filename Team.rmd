@@ -1,5 +1,5 @@
 ---
-title: "Individual1.rmd"
+title: "Team.rmd"
 output: html_document
 ---
 
@@ -34,30 +34,6 @@ loc <- table(choco$Location)
 loc2 <- sort(loc, decreasing = TRUE)
 barplot(loc2)
 ```
-
-The USA has the most ratings by far in comparison to all of the other countries.
-
-Question 3
-
-```{r}
-percent <- choco$Cocoa_Percent
-plot(ratings, percent)
-cor(ratings, percent)
-```
-
-There is little to no correlation between the ratings and the percentage of cocoa used in the chocolate. We can see in the graph that nothing is clearly discernible, and we can see through the correlation value that it is a weak correlation.
-
-Question 4
-
-```{r}
-boxplot(Rating ~ Bean_Origin, data = choco)
-```
-
-```{r}
-table(choco$Bean_Origin)
-```
-
-I think that bean origin affects ratings because as we can see from the boxplot, there are some beans from certain countries that are rated higher than others, for instance the disparity between the USA and Sulawesi is evident. It is also evdent that the country plays a factor because certain countries have a higher diversity of beans so they have the chance to home more high-rating beans.
 
 Question 5
 
