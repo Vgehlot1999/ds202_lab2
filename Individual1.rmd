@@ -1,0 +1,85 @@
+---
+title: "VismayGehlot.rmd"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+choco <- read.csv("https://raw.githubusercontent.com/xdaiISU/ds202materials/master/hwlabs/data/choco.csv") 
+str(choco)
+```
+
+Question 1
+
+```{r}
+ratings <- choco$Rating
+hist(ratings)
+```
+
+There are a few outliers on the lower end between 1 and 2
+
+```{r}
+boxplot(ratings)
+```
+
+The box plot reveals the same thing, that there are outliers on the lower scale between and including 1 and 2
+
+Question 2
+
+```{r}
+loc <- table(choco$Location)
+loc2 <- sort(loc, decreasing = TRUE)
+barplot(loc2)
+```
+
+The USA has the most ratings by far in comparison to all of the other countries.
+
+Question 3
+
+```{r}
+percent <- choco$Cocoa_Percent
+plot(ratings, percent)
+cor(ratings, percent)
+```
+
+There is little to no correlation between the ratings and the percentage of cocoa used in the chocolate. We can see in the graph that nothing is clearly discernible, and we can see through the correlation value that it is a weak correlation.
+
+Question 4
+
+```{r}
+boxplot(Rating ~ Bean_Origin, data = choco)
+```
+
+```{r}
+table(choco$Bean_Origin)
+```
+
+I think that bean origin affects ratings because as we can see from the boxplot, there are some beans from certain countries that are rated higher than others, for instance the disparity between the USA and Sulawesi is evident. It is also evdent that the country plays a factor because certain countries have a higher diversity of beans so they have the chance to home more high-rating beans.
+
+Question 5
+
+My first analysis will be comparing the date that chocolate was produced in comparison to it's rating. I will look at in 5 sections, 2006, 2009, 2012, 2015, and 2018.
+
+```{r}
+years <- choco$Date
+unique(sort(years, decreasing = TRUE))
+```
+
+```{r}
+inc1 <- choco[years == 2006,]
+inc2 <- choco[years == 2009,]
+inc3 <- choco[years == 2012,]
+inc4 <- choco[years == 2015,]
+inc5 <- choco[years == 2018,]
+
+summary(inc1$Rating)
+summary(inc2$Rating)
+summary(inc3$Rating)
+summary(inc4$Rating)
+summary(inc5$Rating)
+```
+
+Through the summaries above, we can see that the lowest chocolate ratings have increased over time, as well as the mean ratings per year has shown an overall positive trend. From this, we can conclude that chocolate ratings have gone up overall over the course of the years.
