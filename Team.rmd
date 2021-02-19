@@ -35,6 +35,29 @@ loc2 <- sort(loc, decreasing = TRUE)
 barplot(loc2)
 ```
 
+Question3
+
+```{r}
+
+cor(choco$Rating, choco$Cocoa_Percent) 
+plot(choco$Rating, choco$Cocoa_Percent)
+
+#The correlation value for ratings and the cacao percentage of a chocolate bar is -0.1510178. Meaning that they have a negative relationship, meaning that ratings go up when the cacao percentage goes down. Probably because if the cacao percentage goes up, the bitter the chocolate gets. 
+
+```
+
+Question 4
+
+```{r}
+boxplot(Rating ~ Bean_Origin, data = choco)
+
+table(choco$Bean_Origin, choco$Rating)
+
+#As we can see from the below boxplot, it seems that some bean origin places are better than other sites. The reason for that is some boxplots are located higher in ratings than others.
+
+```
+
+
 Question 5
 
 My first analysis will be comparing the date that chocolate was produced in comparison to it's rating. I will look at in 5 sections, 2006, 2009, 2012, 2015, and 2018.
@@ -59,3 +82,12 @@ summary(inc5$Rating)
 ```
 
 Through the summaries above, we can see that the lowest chocolate ratings have increased over time, as well as the mean ratings per year has shown an overall positive trend. From this, we can conclude that chocolate ratings have gone up overall over the course of the years.
+
+
+```{r}
+#I would like to analyze the variable "Date" and the "Cocoa_Percent." I chose that because I thought that there might be some changes in cocoa percent through the years. 
+
+cor(choco$Date, choco$Cocoa_Percent) 
+plot(choco$Date, choco$Cocoa_Percent)
+
+#When looking at the correlation between the two variables, it seems like there is a very little positive correlation between the two variables "Date" and "Cocoa_Percent". Meaning that as the year goes by, the percentage of the cocoa in the chocolate increases. However, when I look at the scatterplot for these two variables, it is quite interesting. I figured out that there exists a trend for the cocoa percentages in chocolate for every years. You can see that the percentage of cocoa increases from year 2006 till 2013, and it starts decreasing from year 2014. Meaning that starting from year 2014, chocolate with less cocoa percent became a trend. 
