@@ -1,0 +1,99 @@
+---
+title: "individual2"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+choco <- read.csv("https://raw.githubusercontent.com/xdaiISU/ds202materials/master/hwlabs/data/choco.csv") 
+str(choco) 
+```
+#Libraries
+
+```{r}
+
+library(dplyr)
+library(readr)
+library(tidyr)
+library(knitr)
+library(ggplot2)
+
+```
+
+###Question 1 
+
+#How are the ratings distributed? Create both a histogram and a boxplot and describe them. Don’t forget to mention outliers, if there are any.
+
+```{r}
+hrate<- hist(choco$Rating)
+brate<- boxplot(choco$Rating)
+
+#The histogram of the ratings seems to be bimodal and skewed left. Also, there are about 4 outliers when looking at the graph. 
+
+#When looking at the boxplot for the ratings, we can see that lower whisker is longer than the top one , and there are 4 visible outliers. 
+
+```
+###Question 2
+
+#How does the number of ratings depend on the location of the company? Draw a bar chart of the number of reports.
+
+```{r}
+q2<- table(choco$Location)
+q22<- sort(q2, decreasing = TRUE)
+barplot(q22)
+
+# The number of ratings vary largely depending on the location of the company. As we can see in the graph below, most of the companies are located in U.S.A, and very few for others, where it is hard for us to define the correlation between the ratings and the location of the company.  
+```
+
+
+
+
+
+
+###Question 3
+
+#Do ratings depend on the cacao percentage of a chocolate bar? Create both numerical and graphical summaries, and explain. [Hint: Think about why the scatterplot is not a very good choice for visualization here.]
+
+```{r}
+
+cor(choco$Rating, choco$Cocoa_Percent) 
+plot(choco$Rating, choco$Cocoa_Percent)
+
+#The correlation value for ratings and the cacao percentage of a chocolate bar is -0.1510178. Meaning that they have a negative relationship, meaning that when the cacao percentage goes down, ratings go up. Probably because, if the cacao percentage goes up, the bitter the chocolate gets. 
+
+```
+
+###Question 4
+
+#How do different bean origins compare in terms of the flavor of chocolates? Are beans from some places better than the other? Create both numerical and graphical summaries, and explain.
+
+```{r}
+boxplot(Rating ~ Bean_Origin, data = choco)
+
+table(choco$Bean_Origin, choco$Rating)
+
+#As we can see from the below boxplot, it seems that there are actually some bean origin places that are better than other places. Reason for that is some boxplots are located higher in ratings than others.
+
+```
+
+###Question 5
+
+#Brainstorm two analyses you would like to perform (with your teammates). Describe in plain language what comparisons are you making. Create suitable numerical and graphical summaries for your analyses. Describe the results.
+
+```{r}
+#I would like to analyze the variable "Date" and the "Cocoa_Percent." I chose that because I thought that there might be some changes in cocoa percent through the years. 
+
+cor(choco$Date, choco$Cocoa_Percent) 
+plot(choco$Date, choco$Cocoa_Percent)
+
+#When looking at the correlation between the two variables, it seems like there is a very little positive correlation between the two variables "Date" and "Cocoa_Percent". Meaning that as the year goes by, the percentage of the cocoa in the chocolate increases. However, when I look at the scatterplot for these two variables, it is quite interesting. I figured out that there exists a trend for the cocoa percentages in chocolate for every years. You can see that the percentage of cocoa increases from year 2006 till 2013, and it starts decreasing from year 2014. Meaning that starting from year 2014, chocolate with less cocoa percent became a trend. 
+
+```
+
+
+
+
+
